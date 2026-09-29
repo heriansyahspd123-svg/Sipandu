@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+@media print {
+  /* Hide non-printable navigation, header, sidebar, and buttons */
+  nav, 
+  aside, 
+  header, 
+  footer, 
+  .print\:hidden,
+  [data-print-hide] {
+    display: none !important;
+  }
+
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    font-size: 11pt !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .lg\:pl-64 {
+    padding-left: 0 !important;
+  }
+
+  main {
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* Prevent awkward page breaks in the middle of tables, signatures, and cards */
+  table, tr, td, th, .page-break-avoid {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  @page {
+    size: A4 portrait;
+    margin: 15mm;
+  }
+}

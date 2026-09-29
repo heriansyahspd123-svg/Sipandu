@@ -1,0 +1,6 @@
+{
+  "name": "SIPANDU SEKOLAH - Sistem Pendampingan Mutu Sekolah",
+  "description": "Platform digital terpadu pendampingan mutu, 8 Standar Nasional Pendidikan, Rapor Pendidikan, Bank Bukti, RTL, dan simulasi kesiapan akreditasi sekolah binaan Kabupaten Sidrap.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
