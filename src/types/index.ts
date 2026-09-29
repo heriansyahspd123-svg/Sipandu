@@ -272,3 +272,22 @@ export interface AuditLogItem {
   details: string;
   schoolName?: string;
 }
+
+export interface IA2024Item {
+  id: number; // 1 to 14
+  code: string; // 'Butir 1', 'Butir 2', etc.
+  componentId: 1 | 2 | 3 | 4;
+  componentTitle: string;
+  statement: string;
+  focusExplanation: string;
+  linkedStandardIds: number[]; // 1 to 8 SNP
+  linkedStandardNames: string[];
+  manifestationInAction: string; // Kinerja nyata yang dinilai asesor di lapangan
+  triangulationMethod: string; // Observasi kelas, wawancara, telaah bukti digital
+  // Interactive inputs per school:
+  currentLevel: 1 | 2 | 3 | 4; // 1: Perlu Peningkatan, 2: Dasar/Cukup, 3: Baik/Cakap, 4: Unggul/Mahir
+  schoolReflection: string; // Catatan refleksi kinerja nyata sekolah
+  linkedEvidenceIds: string[]; // Bukti digital terpaut dari bank bukti
+  updatedAt?: string;
+}
+

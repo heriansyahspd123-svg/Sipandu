@@ -27,7 +27,8 @@ import {
   Sparkle,
   Sliders,
   Compass,
-  Check
+  Check,
+  Network
 } from 'lucide-react';
 
 interface AccreditationSimProps {
@@ -330,6 +331,15 @@ export const AccreditationSim: React.FC<AccreditationSimProps> = ({ onNavigateTa
 
         {/* Sub-Navigation Tabs within Akreditasi */}
         <div className="flex items-center gap-2 mt-6 pt-4 border-t border-white/10 overflow-x-auto scrollbar-none">
+          <button
+            type="button"
+            onClick={() => onNavigateTab('benang_merah')}
+            className="px-3.5 py-2 rounded-xl text-xs font-bold transition shrink-0 flex items-center gap-1.5 bg-gradient-to-r from-teal-500 to-emerald-500 text-slate-950 shadow-md hover:brightness-110 active:scale-95 cursor-pointer"
+          >
+            <Network className="w-3.5 h-3.5 text-slate-950" />
+            <span>Benang Merah IA2024 & 8 SNP (14 Butir)</span>
+          </button>
+
           <button
             onClick={() => setActiveSubTab('diagnosa')}
             className={`px-3.5 py-2 rounded-xl text-xs font-bold transition shrink-0 flex items-center gap-1.5 ${

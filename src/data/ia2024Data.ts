@@ -1,0 +1,258 @@
+import { IA2024Item } from '../types';
+
+export const DEFAULT_IA2024_ITEMS: IA2024Item[] = [
+  // KOMPONEN 1: Kinerja Pendidik dalam Proses Pembelajaran (Butir 1–4)
+  {
+    id: 1,
+    code: 'Butir 1',
+    componentId: 1,
+    componentTitle: 'Kinerja Pendidik dalam Proses Pembelajaran',
+    statement: 'Pendidik menyediakan lingkungan belajar yang aman, responsif, dan berfokus pada murid (interaksi positif, dukungan emosional).',
+    focusExplanation: 'Fokus pada interaksi pedagogis positif antara pendidik dan murid, pemberian dukungan emosional, serta ketiadaan perlakuan diskriminatif atau kekerasan verbal/fisik.',
+    linkedStandardIds: [3, 4],
+    linkedStandardNames: ['Standar Proses', 'Standar Pendidik dan Tenaga Kependidikan'],
+    manifestationInAction: 'Pendidik membangun komunikasi hangat, menyapa murid dengan ramah, mendengarkan keluhan murid tanpa menghakimi, dan memfasilitasi kebutuhan psikososial saat pembelajaran.',
+    triangulationMethod: 'Observasi langsung proses belajar mengajar di kelas, wawancara murid acak mengenai rasa nyaman di kelas, dan wawancara pendidik.',
+    currentLevel: 3,
+    schoolReflection: 'Pendidik telah terbiasa menyapa ramah dan memberikan motivasi awal. Pembiasaan budaya 5S (Senyum, Sapa, Salam, Sopan, Santun) berjalan aktif saat jam pelajaran.',
+    linkedEvidenceIds: []
+  },
+  {
+    id: 2,
+    code: 'Butir 2',
+    componentId: 1,
+    componentTitle: 'Kinerja Pendidik dalam Proses Pembelajaran',
+    statement: 'Pendidik memfasilitasi pembelajaran yang membangun disiplin positif dan pengelolaan kelas yang efektif.',
+    focusExplanation: 'Fokus pada penyusunan kesepakatan/keyakinan kelas secara partisipatif bersama murid, penerapan disiplin positif melalui restitusi, dan transisi aktivitas belajar yang terstruktur.',
+    linkedStandardIds: [3],
+    linkedStandardNames: ['Standar Proses'],
+    manifestationInAction: 'Terpasangnya Keyakinan Kelas di dinding kelas yang disepakati bersama. Ketika ada pelanggaran, guru mengajak murid merefleksikan nilai yang dilanggar melalui segitiga restitusi (bukan hukuman fisik/denda uang).',
+    triangulationMethod: 'Observasi pajangan keyakinan kelas dan respon guru saat murid terlambat/ribut, wawancara perwakilan murid tentang konsekuensi yang adil.',
+    currentLevel: 3,
+    schoolReflection: 'Seluruh rombel telah memiliki piagam Kesepakatan Kelas awal semester. Guru menerapkan restitusi dan pembinaan konseling kelas.',
+    linkedEvidenceIds: []
+  },
+  {
+    id: 3,
+    code: 'Butir 3',
+    componentId: 1,
+    componentTitle: 'Kinerja Pendidik dalam Proses Pembelajaran',
+    statement: 'Pendidik mengelola proses pembelajaran secara kontekstual dan bermakna (perencanaan, pelaksanaan, dan asesmen yang selaras).',
+    focusExplanation: 'Fokus pada pembelajaran berdiferensiasi yang mengaitkan materi dengan kehidupan nyata/lingkungan sekitar siswa (kearifan lokal Sidrap), serta asesmen yang selaras dengan tujuan pembelajaran.',
+    linkedStandardIds: [2, 3, 8],
+    linkedStandardNames: ['Standar Isi', 'Standar Proses', 'Standar Penilaian Pendidikan'],
+    manifestationInAction: 'Guru menggunakan contoh konkret lingkungan sekitar murid (misal: pertanian, pasar lokal, budaya lokal), memberikan pilihan tugas sesuai minat/kesiapan murid, dan mengintegrasikan asesmen formatif saat mengajar.',
+    triangulationMethod: 'Observasi aktivitas belajar murid di kelas, telaah modul ajar dan lembar kerja siswa, wawancara murid tentang keterhubungan materi dengan keseharian.',
+    currentLevel: 3,
+    schoolReflection: 'Guru merancang pembelajaran berbasis proyek (P5) dan materi ajar kontekstual kearifan lokal pertanian dan perdagangan di Kab. Sidrap.',
+    linkedEvidenceIds: []
+  },
+  {
+    id: 4,
+    code: 'Butir 4',
+    componentId: 1,
+    componentTitle: 'Kinerja Pendidik dalam Proses Pembelajaran',
+    statement: 'Pendidik memfasilitasi pembelajaran yang efektif melalui pemberian umpan balik konstruktif.',
+    focusExplanation: 'Fokus pada umpan balik formatif berkelanjutan yang spesifik (bukan sekadar memberi tanda centang/nilai angka), membantu murid mengetahui apa yang sudah baik dan langkah perbaikan yang perlu diambil.',
+    linkedStandardIds: [3, 8],
+    linkedStandardNames: ['Standar Proses', 'Standar Penilaian Pendidikan'],
+    manifestationInAction: 'Buku latihan murid memiliki catatan apresiasi dan petunjuk langkah perbaikan konkret dari guru. Guru melakukan dialog reflektif dengan murid setelah penilaian formatif.',
+    triangulationMethod: 'Telaah dokumen lembar kerja/buku catatan murid yang diperiksa guru, wawancara murid tentang manfaat komentar guru bagi perbaikan belajarnya.',
+    currentLevel: 3,
+    schoolReflection: 'Pemberian rubrik penilaian dan catatan umpan balik kualitatif pada portofolio tugas murid telah dibiasakan oleh dewan guru.',
+    linkedEvidenceIds: []
+  },
+
+  // KOMPONEN 2: Kepemimpinan Kepala Satuan Pendidikan (Butir 5–9)
+  {
+    id: 5,
+    code: 'Butir 5',
+    componentId: 2,
+    componentTitle: 'Kepemimpinan Kepala Satuan Pendidikan',
+    statement: 'Kepala satuan pendidikan memimpin refleksi dan evaluasi berkala untuk perbaikan mutu pembelajaran.',
+    focusExplanation: 'Fokus pada kepemimpinan instruksional kepala sekolah dalam memfasilitasi forum refleksi guru (Komunitas Belajar / Kombel), menganalisis capaian Rapor Pendidikan (PBD), dan menindaklanjuti supervisi.',
+    linkedStandardIds: [6],
+    linkedStandardNames: ['Standar Pengelolaan'],
+    manifestationInAction: 'Kepala sekolah memimpin pertemuan mingguan/dua mingguan Komunitas Belajar guru di sekolah untuk mendiskusikan kesulitan mengajar dan solusi bersama berdasarkan data nyata capaian murid.',
+    triangulationMethod: 'Notula dan jadwal pertemuan Kombel sekolah, instrumen dan catatan tindak lanjut supervisi akademik guru, wawancara dewan guru.',
+    currentLevel: 4,
+    schoolReflection: 'Komunitas Belajar (Kombel) intra-sekolah aktif berkumpul setiap hari Sabtu untuk refleksi modul ajar dan bedah indikator Rapor Pendidikan.',
+    linkedEvidenceIds: []
+  },
+  {
+    id: 6,
+    code: 'Butir 6',
+    componentId: 2,
+    componentTitle: 'Kepemimpinan Kepala Satuan Pendidikan',
+    statement: 'Kepala satuan pendidikan memastikan program pengembangan profesional guru dilakukan secara berkelanjutan.',
+    focusExplanation: 'Fokus pada alokasi kesempatan dan fasilitasi kepala sekolah bagi pendidik untuk meningkatkan kompetensi melalui IHT, Platform Merdeka Mengajar (PMM), KKG/MGMP, dan pelatihan eksternal.',
+    linkedStandardIds: [4, 6],
+    linkedStandardNames: ['Standar Pendidik dan Tenaga Kependidikan', 'Standar Pengelolaan'],
+    manifestationInAction: 'Ada program kerja pengembangan SDM guru yang terencana, guru didukung mengikuti pelatihan berjenjang, dan ada sesi desiminasi ilmu antarguru setelah pelatihan.',
+    triangulationMethod: 'Rencana kerja tahunan pengembangan SDM, bukti sertifikat pelatihan/aksi nyata PMM guru, wawancara guru mengenai dukungan kepala sekolah.',
+    currentLevel: 3,
+    schoolReflection: '90% guru telah menyelesaikan topik aksi nyata di PMM dan sekolah rutin mengikutsertakan guru dalam workshop KKG/MGMP gugus.',
+    linkedEvidenceIds: []
+  },
+  {
+    id: 7,
+    code: 'Butir 7',
+    componentId: 2,
+    componentTitle: 'Kepemimpinan Kepala Satuan Pendidikan',
+    statement: 'Kepala satuan pendidikan mengomunikasikan dan mewujudkan visi-misi dengan melibatkan pemangku kepentingan.',
+    focusExplanation: 'Fokus pada sosialisasi dan internalisasi visi-misi sekolah yang melibatkan komite sekolah, paguyuban orang tua murid, tokoh masyarakat, dan dunia kerja agar menjadi pedoman bersama.',
+    linkedStandardIds: [6],
+    linkedStandardNames: ['Standar Pengelolaan'],
+    manifestationInAction: 'Visi-misi dipahami secara nyata oleh guru, murid, dan komite. Program-program sekolah mencerminkan pencapaian visi tersebut secara konsisten.',
+    triangulationMethod: 'Dokumen perumusan visi-misi bersama komite, wawancara pengurus komite sekolah, dan wawancara acak murid/orang tua murid.',
+    currentLevel: 4,
+    schoolReflection: 'Pertemuan pleno komite sekolah di awal tahun ajaran dan buletin komunikasi sekolah memperkuat kemitraan dengan orang tua murid.',
+    linkedEvidenceIds: []
+  },
+  {
+    id: 8,
+    code: 'Butir 8',
+    componentId: 2,
+    componentTitle: 'Kepemimpinan Kepala Satuan Pendidikan',
+    statement: 'Kepala satuan pendidikan mengelola anggaran, sarana, dan prasarana secara transparan untuk mendukung pembelajaran.',
+    focusExplanation: 'Fokus pada tata kelola dana BOS/BOSP melalui ARKAS/PBD yang berpihak pada kebutuhan belajar murid, transparansi papan informasi anggaran, serta pemeliharaan sarpras belajar.',
+    linkedStandardIds: [5, 6, 7],
+    linkedStandardNames: ['Standar Sarana dan Prasarana', 'Standar Pengelolaan', 'Standar Pembiayaan'],
+    manifestationInAction: 'Papan informasi penggunaan dana BOS terpasang transparan di area publik sekolah, buku/media ajar tersedia cukup dan terawat di perpustakaan serta ruang kelas.',
+    triangulationMethod: 'Pengecekan fisik papan transparansi BOS dan kondisi sarpras (perpustakaan, ruang kelas, toilet), wawancara bendahara dan komite sekolah.',
+    currentLevel: 3,
+    schoolReflection: 'Pengelolaan anggaran terintegrasi di ARKAS 4.0 dan dipublikasikan pada papan transparansi sekolah serta dilaporkan ke komite secara berkala.',
+    linkedEvidenceIds: []
+  },
+  {
+    id: 9,
+    code: 'Butir 9',
+    componentId: 2,
+    componentTitle: 'Kepemimpinan Kepala Satuan Pendidikan',
+    statement: 'Kepala satuan pendidikan melakukan analisis dan pengembangan kurikulum tingkat satuan pendidikan secara kontekstual.',
+    focusExplanation: 'Fokus pada Kurikulum Operasional Satuan Pendidikan (KOSP/KSP) yang dikembangkan secara mandiri, relevan dengan karakteristik murid, serta dievaluasi setiap tahun ajaran.',
+    linkedStandardIds: [1, 2, 6],
+    linkedStandardNames: ['Standar Kompetensi Lulusan', 'Standar Isi', 'Standar Pengelolaan'],
+    manifestationInAction: 'Dokumen KOSP bukan hasil copy-paste dari sekolah lain, melainkan memuat analisis karakteristik unik sekolah, pengorganisasian pembelajaran intrakurikuler, kokurikuler P5, dan ekstrakurikuler.',
+    triangulationMethod: 'Telaah dokumen KOSP/KSP, berita acara dan daftar hadir penyusunan kurikulum, wawancara tim pengembang kurikulum sekolah.',
+    currentLevel: 4,
+    schoolReflection: 'Dokumen KOSP direvisi tiap awal tahun ajaran melibatkan pengawas binaan, komite, guru, dan divalidasi oleh Dinas Pendidikan Kab. Sidrap.',
+    linkedEvidenceIds: []
+  },
+
+  // KOMPONEN 3: Iklim Lingkungan Belajar (Butir 10–14)
+  {
+    id: 10,
+    code: 'Butir 10',
+    componentId: 3,
+    componentTitle: 'Iklim Lingkungan Belajar',
+    statement: 'Satuan pendidikan membangun iklim menghargai keragaman dan kebinekaan.',
+    focusExplanation: 'Fokus pada pencegahan intoleransi, penghargaan terhadap perbedaan suku, agama, ras, dan latar belakang sosial ekonomi dalam interaksi harian murid dan pendidik.',
+    linkedStandardIds: [3, 6],
+    linkedStandardNames: ['Standar Proses', 'Standar Pengelolaan'],
+    manifestationInAction: 'Murid dari berbagai latar belakang bergaul rukun tanpa diskriminasi, sekolah merayakan hari-hari besar dan kegiatan kebudayaan yang menumbuhkan toleransi kebangsaan.',
+    triangulationMethod: 'Observasi suasana pergaulan murid di jam istirahat dan kelas, wawancara murid dari kelompok minoritas/berbeda latar belakang.',
+    currentLevel: 4,
+    schoolReflection: 'Festival Budaya Nusantara dan pembiasaan literasi kebinekaan rutin diadakan, tidak pernah ada catatan diskriminasi di sekolah.',
+    linkedEvidenceIds: []
+  },
+  {
+    id: 11,
+    code: 'Butir 11',
+    componentId: 3,
+    componentTitle: 'Iklim Lingkungan Belajar',
+    statement: 'Satuan pendidikan menyediakan lingkungan belajar yang inklusif bagi semua jenis kebutuhan belajar murid.',
+    focusExplanation: 'Fokus pada pemenuhan hak belajar murid dengan kemampuan belajar beragam (termasuk murid berkebutuhan khusus/lambat belajar) dengan pendekatan ramah anak tanpa stigma.',
+    linkedStandardIds: [3, 5],
+    linkedStandardNames: ['Standar Proses', 'Standar Sarana dan Prasarana'],
+    manifestationInAction: 'Guru memberikan bimbingan tambahan bagi murid yang memerlukan perhatian khusus, penataan meja/kursi memudahkan aksesibilitas, tidak ada pelabelan negatif.',
+    triangulationMethod: 'Observasi kelas saat proses interaksi guru dengan murid dengan ragam kecepatan belajar, wawancara orang tua murid berkebutuhan khusus.',
+    currentLevel: 3,
+    schoolReflection: 'Sekolah menyediakan program remidial terbimbing dan ruang konseling inklusif yang ramah bagi seluruh tingkatan kemampuan murid.',
+    linkedEvidenceIds: []
+  },
+  {
+    id: 12,
+    code: 'Butir 12',
+    componentId: 3,
+    componentTitle: 'Iklim Lingkungan Belajar',
+    statement: 'Satuan pendidikan mewujudkan lingkungan yang aman dari perundungan dan kekerasan (memiliki TPPK yang aktif).',
+    focusExplanation: 'Fokus pada keberadaan dan keberfungsian Tim Pencegahan dan Penanganan Kekerasan (TPPK) berdasarkan Permendikbudristek No. 46/2023, ketersediaan saluran pengaduan aman, dan respons cepat terhadap indikasi kekerasan.',
+    linkedStandardIds: [5, 6],
+    linkedStandardNames: ['Standar Sarana dan Prasarana', 'Standar Pengelolaan'],
+    manifestationInAction: 'SK TPPK terdaftar resmi di Dapodik, papan kontak aduan dan kotak curhat terpasang di tempat strategis, murid merasa yakin aduan mereka ditindaklanjuti secara rahasia dan adil.',
+    triangulationMethod: 'Pengecekan SK TPPK dan buku register penanganan aduan, wawancara ketua TPPK dan murid tentang saluran curhat/lapor bullying.',
+    currentLevel: 4,
+    schoolReflection: 'SK TPPK telah sinkron di Dapodik, kotak aduan terpasang di 3 titik, dan duta anti-perundungan aktif mengkampanyekan ramah anak.',
+    linkedEvidenceIds: []
+  },
+  {
+    id: 13,
+    code: 'Butir 13',
+    componentId: 3,
+    componentTitle: 'Iklim Lingkungan Belajar',
+    statement: 'Satuan pendidikan memiliki sistem keselamatan, pertolongan pertama, dan mitigasi bencana.',
+    focusExplanation: 'Fokus pada kesiapsiagaan sekolah menghadapi keadaan darurat, ketersediaan peralatan P3K di UKS, alat pemadam kebakaran (APAR), petunjuk jalur evakuasi, dan simulasi keselamatan.',
+    linkedStandardIds: [5, 6],
+    linkedStandardNames: ['Standar Sarana dan Prasarana', 'Standar Pengelolaan'],
+    manifestationInAction: 'Rambu petunjuk jalur evakuasi dan titik kumpul terpasang jelas di halaman sekolah, kotak P3K lengkap dan tidak ada obat kadaluwarsa, warga sekolah memahami apa yang harus dilakukan saat gempa/kebakaran.',
+    triangulationMethod: 'Inspeksi fisik rambu evakuasi, titik kumpul, APAR, dan ruang UKS, wawancara petugas UKS/pembina PMR dan siswa.',
+    currentLevel: 3,
+    schoolReflection: 'Jalur evakuasi dan titik kumpul telah terpasang di halaman sekolah. Ruang UKS terawat dengan obat P3K berstandar puskesmas pembina.',
+    linkedEvidenceIds: []
+  },
+  {
+    id: 14,
+    code: 'Butir 14',
+    componentId: 3,
+    componentTitle: 'Iklim Lingkungan Belajar',
+    statement: 'Satuan pendidikan menjalankan program menjaga kesehatan fisik dan mental warga sekolah.',
+    focusExplanation: 'Fokus pada pembiasaan hidup bersih dan sehat (PHBS), toilet bersih bersanitasi layak dengan air mengalir, kantin sehat higienis, serta layanan konseling kesehatan mental bagi murid.',
+    linkedStandardIds: [5, 6],
+    linkedStandardNames: ['Standar Sarana dan Prasarana', 'Standar Pengelolaan'],
+    manifestationInAction: 'Toilet murid dan guru bersih, terpisah gender, berbau segar dengan air bersih mencukupi; kantin menjual makanan bergizi; kegiatan senam pagi dan program sarapan bersama berjalan berkala.',
+    triangulationMethod: 'Inspeksi kebersihan toilet dan kantin sekolah, wawancara pengelola kantin dan murid mengenai sanitasi dan konseling guru BK.',
+    currentLevel: 3,
+    schoolReflection: 'Sanitasi toilet dibersihkan harian oleh petugas, senam kebugaran jasmani diadakan setiap Jumat pagi, dan kantin sekolah diawasi rutin.',
+    linkedEvidenceIds: []
+  }
+];
+
+export const IA2024_COMPONENT_INFO = [
+  {
+    id: 1,
+    title: 'Kinerja Pendidik dalam Proses Pembelajaran',
+    itemRange: 'Butir 1 – 4',
+    itemCount: 4,
+    integratedSNP: ['Standar Proses (3)', 'Standar Penilaian Pendidikan (8)', 'Standar Pendidik & Tenaga Kependidikan (4)'],
+    paradigmShift: 'Asesor melihat langsung apakah guru benar-benar mengajar dengan aktif, menerapkan disiplin positif, membuat asesmen kontekstual, dan memberikan umpan balik bermakna (bukan sekadar melihat tumpukan dokumen Modul Ajar/RPP di lemari).',
+    color: 'from-blue-600 to-indigo-700'
+  },
+  {
+    id: 2,
+    title: 'Kepemimpinan Kepala Satuan Pendidikan',
+    itemRange: 'Butir 5 – 9',
+    itemCount: 5,
+    integratedSNP: ['Standar Pengelolaan (6)', 'Standar Isi (2)', 'Standar Pembiayaan (7)', 'Standar Sarana & Prasarana (5)'],
+    paradigmShift: 'Kepala sekolah dinilai dari kepemimpinan instruksional nyata: memimpin refleksi guru (Kombel), mengalokasikan anggaran BOS untuk kebutuhan belajar murid, mengonstruksi kurikulum KOSP kontekstual, dan merawat sarpras (bukan sekadar melihat buku RKAS atau pigura visi-misi).',
+    color: 'from-teal-600 to-emerald-700'
+  },
+  {
+    id: 3,
+    title: 'Iklim Lingkungan Belajar',
+    itemRange: 'Butir 10 – 14',
+    itemCount: 5,
+    integratedSNP: ['Standar Pengelolaan (6)', 'Standar Sarana & Prasarana (5)', 'Standar Proses (3)'],
+    paradigmShift: 'Menilai bagaimana pengelolaan sekolah mampu mewujudkan ekosistem yang inklusif, aman dari perundungan (TPPK aktif), ramah kebinekaan, tanggap bencana, dan mendukung kesehatan fisik serta mental siswa.',
+    color: 'from-amber-600 to-orange-700'
+  },
+  {
+    id: 4,
+    title: 'Hasil Belajar Lulusan (Evaluasi Sistem Pendidikan - ESP)',
+    itemRange: 'Komponen Otomatis (Asesmen Nasional & Rapor Pendidikan)',
+    itemCount: 1,
+    integratedSNP: ['Standar Kompetensi Lulusan - SKL (1)'],
+    paradigmShift: 'Ketercapaian SKL tidak lagi dinilai lewat tumpukan lembar portofolio murid, melainkan ditarik secara otomatis dari Evaluasi Sistem Pendidikan (ESP) yang bersumber dari Asesmen Nasional (AN) dan indikator Rapor Pendidikan (Literasi, Numerasi, Karakter).',
+    color: 'from-purple-600 to-pink-700'
+  }
+];

@@ -17,7 +17,9 @@ import {
   Sparkles,
   Edit3,
   Cloud,
-  Users
+  Users,
+  PanelLeftClose,
+  Network
 } from 'lucide-react';
 
 export type NavTab = 
@@ -25,6 +27,7 @@ export type NavTab =
   | 'sekolah'
   | 'tpmps'
   | 'snp'
+  | 'benang_merah'
   | 'rapor'
   | 'rtl'
   | 'tugas'
@@ -96,6 +99,14 @@ export const Sidebar: React.FC<SidebarProps> = ({
       id: 'snp',
       label: '8 Standar (SNP)',
       icon: <Layers className="w-4 h-4" />
+    });
+
+    // Benang Merah IA2024 & 8 SNP (Kepmendikbudristek No. 246/O/2024)
+    items.push({
+      id: 'benang_merah',
+      label: 'Benang Merah IA2024 & 8 SNP',
+      icon: <Network className="w-4 h-4 text-teal-400" />,
+      badge: 'IA2024'
     });
 
     // Rapor Pendidikan
@@ -202,7 +213,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
       {/* Sidebar container */}
       <aside
-        className={`fixed top-0 bottom-0 left-0 z-50 w-64 bg-slate-900 text-slate-100 flex flex-col border-r border-slate-800 transition-transform duration-300 ease-in-out lg:translate-x-0 ${
+        className={`fixed top-0 bottom-0 left-0 z-50 w-64 bg-slate-900 text-slate-100 flex flex-col border-r border-slate-800 transition-transform duration-300 ease-in-out shadow-2xl lg:shadow-none ${
           isOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
@@ -218,10 +229,16 @@ export const Sidebar: React.FC<SidebarProps> = ({
             </div>
           </div>
           <button
+            type="button"
             onClick={onClose}
-            className="lg:hidden p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800"
+            className="p-1.5 sm:px-2.5 sm:py-1.5 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 border border-slate-800 hover:border-slate-700 transition cursor-pointer flex items-center gap-1.5 group"
+            title="Tutup / Sembunyikan Sidebar"
+            aria-label="Tutup Sidebar"
           >
-            <X className="w-5 h-5" />
+            <PanelLeftClose className="w-4 h-4 text-teal-400 group-hover:scale-110 transition-transform" />
+            <span className="text-[10px] font-bold text-slate-300 group-hover:text-white hidden sm:inline">
+              Tutup
+            </span>
           </button>
         </div>
 
@@ -252,7 +269,9 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 key={item.id}
                 onClick={() => {
                   onSelectTab(item.id);
-                  onClose();
+                  if (typeof window !== 'undefined' && window.innerWidth < 1024) {
+                    onClose();
+                  }
                 }}
                 className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-medium transition-all ${
                   isActive

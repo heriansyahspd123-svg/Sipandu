@@ -14,8 +14,10 @@ import {
   NotificationItem,
   AssessmentStatus,
   EvidenceStatus,
-  RTLStatus
+  RTLStatus,
+  IA2024Item
 } from '../types';
+import { DEFAULT_IA2024_ITEMS } from '../data/ia2024Data';
 import { 
   INITIAL_SCHOOLS, 
   INITIAL_USERS, 
@@ -110,6 +112,11 @@ interface AppContextType {
   regulations: Regulation[];
   addRegulation: (reg: Omit<Regulation, 'id'>) => void;
   updateRegulation: (id: string, updates: Partial<Regulation>) => void;
+
+  // Benang Merah IA2024 & 8 SNP (Kepmendikbudristek No. 246/O/2024)
+  ia2024Items: IA2024Item[];
+  updateIA2024Item: (itemId: number, updates: Partial<IA2024Item>) => void;
+  resetIA2024Items: () => void;
 
   // Notifikasi & Audit
   notifications: NotificationItem[];
@@ -296,6 +303,27 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     }
     return INITIAL_AUDIT_LOGS;
   });
+
+  // 11. IA2024 Items (Kepmendikbudristek No. 246/O/2024)
+  const [ia2024Items, setIa2024Items] = useState<IA2024Item[]>(() => {
+    const saved = localStorage.getItem(STORAGE_PREFIX + 'ia2024_' + activeSchoolId);
+    if (saved) {
+      try { return JSON.parse(saved); } catch (e) { /* ignore */ }
+    }
+    return DEFAULT_IA2024_ITEMS;
+  });
+
+  // Switch IA2024 when activeSchoolId changes
+  useEffect(() => {
+    const saved = localStorage.getItem(STORAGE_PREFIX + 'ia2024_' + activeSchoolId);
+    if (saved) {
+      try {
+        setIa2024Items(JSON.parse(saved));
+        return;
+      } catch (e) { /* ignore */ }
+    }
+    setIa2024Items(DEFAULT_IA2024_ITEMS);
+  }, [activeSchoolId]);
 
   // Sync to LocalStorage
   useEffect(() => {
@@ -864,6 +892,24 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     addAuditLog('Pembaruan Regulasi', `Regulasi (${id})`, 'Memperbarui status atau rincian regulasi.');
   };
 
+  // IA2024 (Kepmendikbudristek No. 246/O/2024)
+  const updateIA2024Item = (itemId: number, updates: Partial<IA2024Item>) => {
+    setIa2024Items(prev => {
+      const updated = prev.map(item => 
+        item.id === itemId ? { ...item, ...updates, updatedAt: new Date().toISOString().split('T')[0] } : item
+      );
+      localStorage.setItem(STORAGE_PREFIX + 'ia2024_' + activeSchoolId, JSON.stringify(updated));
+      return updated;
+    });
+    addAuditLog('Input Benang Merah IA2024', `Butir ${itemId}`, 'Memperbarui telaah kinerja nyata & level butir akreditasi.');
+  };
+
+  const resetIA2024Items = () => {
+    setIa2024Items(DEFAULT_IA2024_ITEMS);
+    localStorage.setItem(STORAGE_PREFIX + 'ia2024_' + activeSchoolId, JSON.stringify(DEFAULT_IA2024_ITEMS));
+    addAuditLog('Reset IA2024', '14 Butir Inti', 'Mengembalikan instrumen ke acuan default Kepmen 246/2024.');
+  };
+
   // Notifications
   const markNotificationAsRead = (id: string) => {
     setNotifications(prev => prev.map(n => n.id === id ? { ...n, ...isReadUpdate(n) } : n));
@@ -893,6 +939,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     setRegulations(INITIAL_REGULATIONS);
     setNotifications(INITIAL_NOTIFICATIONS);
     setAuditLogs(INITIAL_AUDIT_LOGS);
+    setIa2024Items(DEFAULT_IA2024_ITEMS);
   };
 
   // Analytics Helpers
@@ -1046,6 +1093,9 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         regulations,
         addRegulation,
         updateRegulation,
+        ia2024Items,
+        updateIA2024Item,
+        resetIA2024Items,
         notifications,
         markNotificationAsRead,
         markAllNotificationsAsRead,

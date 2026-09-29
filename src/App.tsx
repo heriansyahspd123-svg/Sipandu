@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { PanelLeft } from 'lucide-react';
 import { AppProvider, useApp } from './context/AppContext';
 import { Header } from './components/common/Header';
 import { Sidebar, NavTab } from './components/common/Sidebar';
@@ -19,6 +20,7 @@ import { TaskAssignmentView } from './components/tasks/TaskAssignmentView';
 import { MonitoringView } from './components/monitoring/MonitoringView';
 import { SupervisorVisits } from './components/visits/SupervisorVisits';
 import { AccreditationSim } from './components/accreditation/AccreditationSim';
+import { BenangMerahIA2024View } from './components/accreditation/BenangMerahIA2024View';
 import { ReportGenerator } from './components/reports/ReportGenerator';
 import { MasterRegulasi } from './components/regulations/MasterRegulasi';
 import { AuditTrailView } from './components/audit/AuditTrailView';
@@ -32,7 +34,34 @@ function MainAppContent() {
   const { currentUser } = useApp();
 
   const [currentTab, setCurrentTab] = useState<NavTab>('dashboard');
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('sipandu_sidebar_open');
+      if (saved !== null) {
+        return saved === 'true';
+      }
+      return window.innerWidth >= 1024;
+    }
+    return true;
+  });
+
+  const toggleSidebar = () => {
+    setIsSidebarOpen(prev => {
+      const next = !prev;
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('sipandu_sidebar_open', String(next));
+      }
+      return next;
+    });
+  };
+
+  const closeSidebar = () => {
+    setIsSidebarOpen(false);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('sipandu_sidebar_open', 'false');
+    }
+  };
+
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isNotificationOpen, setIsNotificationOpen] = useState(false);
   const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
@@ -96,22 +125,25 @@ function MainAppContent() {
       {/* Offline Banner for PWA compliance */}
       <OfflineBanner />
 
-      {/* Sidebar for Desktop / Tablet */}
+      {/* Sidebar for Desktop / Tablet / Mobile */}
       <Sidebar
         currentTab={currentTab}
         onSelectTab={setCurrentTab}
         isOpen={isSidebarOpen}
-        onClose={() => setIsSidebarOpen(false)}
+        onClose={closeSidebar}
         onOpenUserProfile={() => setIsUserProfileModalOpen(true)}
         onOpenCloudStorage={() => setIsCloudStorageOpen(true)}
       />
 
-      {/* Main Layout Area */}
-      <div className="lg:pl-64 flex flex-col flex-1 pb-16 lg:pb-8">
+      {/* Main Layout Area - Flexible transition based on sidebar visibility */}
+      <div className={`flex flex-col flex-1 pb-16 lg:pb-8 transition-all duration-300 ease-in-out ${
+        isSidebarOpen ? 'lg:pl-64' : 'lg:pl-0'
+      }`}>
         
         {/* Top Header */}
         <Header
-          onToggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)}
+          isSidebarOpen={isSidebarOpen}
+          onToggleSidebar={toggleSidebar}
           onOpenSearch={() => setIsSearchOpen(true)}
           onOpenNotifications={() => setIsNotificationOpen(true)}
           onOpenSchoolProfile={() => setIsProfileModalOpen(true)}
@@ -137,6 +169,11 @@ function MainAppContent() {
             <SNPModule 
               onOpenUploadForIndicator={handleOpenUploadForIndicator}
               onNavigateTab={handleNavigateTab}
+            />
+          )}
+          {currentTab === 'benang_merah' && (
+            <BenangMerahIA2024View 
+              onNavigateTab={handleNavigateTab} 
             />
           )}
           {currentTab === 'bank_bukti' && (
@@ -236,6 +273,25 @@ function MainAppContent() {
         defaultIndicatorId={uploadIndicatorId}
         defaultStandardId={uploadStandardId}
       />
+
+      {/* Floating reopen button when sidebar is closed on desktop */}
+      {!isSidebarOpen && (
+        <button
+          type="button"
+          onClick={() => {
+            setIsSidebarOpen(true);
+            if (typeof window !== 'undefined') {
+              localStorage.setItem('sipandu_sidebar_open', 'true');
+            }
+          }}
+          className="fixed bottom-6 left-6 z-40 hidden lg:flex items-center gap-2 px-3.5 py-2.5 rounded-2xl bg-slate-900/90 hover:bg-slate-900 text-white shadow-xl border border-slate-700/80 backdrop-blur-md transition-all hover:scale-105 cursor-pointer text-xs font-bold animate-in fade-in"
+          title="Buka Menu Sidebar"
+          aria-label="Buka Menu Sidebar"
+        >
+          <PanelLeft className="w-4 h-4 text-teal-400" />
+          <span>Buka Menu</span>
+        </button>
+      )}
 
     </div>
   );

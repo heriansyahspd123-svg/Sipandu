@@ -21,6 +21,7 @@ import {
 } from 'lucide-react';
 
 interface HeaderProps {
+  isSidebarOpen?: boolean;
   onToggleSidebar?: () => void;
   onOpenSearch: () => void;
   onOpenNotifications: () => void;
@@ -30,6 +31,7 @@ interface HeaderProps {
 }
 
 export const Header: React.FC<HeaderProps> = ({
+  isSidebarOpen,
   onToggleSidebar,
   onOpenSearch,
   onOpenNotifications,
@@ -110,10 +112,14 @@ export const Header: React.FC<HeaderProps> = ({
               <button
                 type="button"
                 onClick={onToggleSidebar}
-                className="lg:hidden p-2 rounded-lg text-slate-500 hover:text-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 focus:outline-none"
-                aria-label="Buka Menu"
+                className="p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200/80 dark:border-slate-800 transition focus:outline-none cursor-pointer flex items-center gap-1.5 shadow-2xs"
+                aria-label={isSidebarOpen ? "Tutup Sidebar Menu" : "Buka Sidebar Menu"}
+                title={isSidebarOpen ? "Tutup Sidebar (Fokus Layar Penuh)" : "Buka Sidebar Menu"}
               >
-                <Menu className="w-5 h-5" />
+                <Menu className="w-5 h-5 text-teal-600 dark:text-teal-400" />
+                <span className="text-xs font-bold text-slate-700 dark:text-slate-200 hidden sm:inline">
+                  {isSidebarOpen ? 'Tutup Menu' : 'Menu'}
+                </span>
               </button>
 
               <div className="flex items-center gap-2.5">
