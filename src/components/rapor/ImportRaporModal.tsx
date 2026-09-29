@@ -63,7 +63,7 @@ export const ImportRaporModal: React.FC<ImportRaporModalProps> = ({ isOpen, onCl
     if (str.includes('literasi')) return 'Kemampuan Literasi';
     if (str.includes('numerasi')) return 'Kemampuan Numerasi';
     if (str.includes('karakter')) return 'Karakter';
-    if (str.includes('aman') || str.includes('keamanan')) return 'Iklim Keamanan';
+    if (str.includes('aman') || str.includes('keamanan')) return 'Iklim Keamanan Sekolah';
     if (str.includes('kebinekaan') || str.includes('bhinneka')) return 'Iklim Kebinekaan';
     if (str.includes('ajar') || str.includes('pembelajaran') || str.includes('kualitas')) return 'Kualitas Pembelajaran';
     return 'Kualitas Pembelajaran';

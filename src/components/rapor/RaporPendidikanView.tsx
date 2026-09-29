@@ -13,8 +13,11 @@ import {
   Lightbulb, 
   PlusCircle,
   HelpCircle,
-  X
+  X,
+  FileSpreadsheet,
+  FileText
 } from 'lucide-react';
+import { ImportRaporModal } from './ImportRaporModal';
 
 interface RaporPendidikanViewProps {
   onNavigateTab: (tab: string) => void;
@@ -30,6 +33,7 @@ export const RaporPendidikanView: React.FC<RaporPendidikanViewProps> = ({ onNavi
 
   const [selectedRapor, setSelectedRapor] = useState<RaporItem | null>(null);
   const [successBanner, setSuccessBanner] = useState<string | null>(null);
+  const [isImportModalOpen, setIsImportModalOpen] = useState(false);
 
   const schoolRapor = raporItems.filter(r => r.schoolId === activeSchool.id);
 
@@ -77,6 +81,26 @@ export const RaporPendidikanView: React.FC<RaporPendidikanViewProps> = ({ onNavi
               {schoolRapor.filter(r => r.isPriority).length} Indikator
             </span>
           </div>
+        </div>
+
+        {/* Action Buttons: Import Excel & Export PDF */}
+        <div className="flex flex-wrap items-center gap-2.5 mt-5 pt-4 border-t border-white/10">
+          <button
+            type="button"
+            onClick={() => setIsImportModalOpen(true)}
+            className="px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold shadow-md transition flex items-center gap-2 cursor-pointer active:scale-95"
+          >
+            <FileSpreadsheet className="w-4 h-4 text-white" />
+            <span>Input File Excel Rapor PBD (.xlsx)</span>
+          </button>
+          <button
+            type="button"
+            onClick={() => onNavigateTab('reports')}
+            className="px-4 py-2 rounded-xl bg-white/15 hover:bg-white/25 text-white text-xs font-semibold backdrop-blur-xs transition flex items-center gap-1.5 cursor-pointer"
+          >
+            <FileText className="w-3.5 h-3.5 text-indigo-200" />
+            <span>Cetak / Ekspor PDF Rapor PBD</span>
+          </button>
         </div>
       </div>
 
@@ -277,6 +301,16 @@ export const RaporPendidikanView: React.FC<RaporPendidikanViewProps> = ({ onNavi
           );
         })}
       </div>
+
+      {/* Modal Input File Excel Rapor & Analisis Kontekstual */}
+      <ImportRaporModal
+        isOpen={isImportModalOpen}
+        onClose={() => setIsImportModalOpen(false)}
+        onSuccess={(count) => {
+          setSuccessBanner(`Berhasil mengimpor dan menganalisis ${count} indikator Rapor Pendidikan secara kontekstual! Data telah diselaraskan ke 8 SNP & modul RTL.`);
+          setTimeout(() => setSuccessBanner(null), 6000);
+        }}
+      />
 
     </div>
   );
